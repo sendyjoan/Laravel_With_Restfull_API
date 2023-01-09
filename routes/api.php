@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +31,8 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
         return auth()->user();
     });
 
+    Route::resource('/posts', \App\Http\Controllers\Api\PostController::class);
+    
     // API route for logout user
     Route::post('/logout', [App\Http\Controllers\API\AuthController::class, 'logout']);
 });
